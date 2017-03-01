@@ -3,10 +3,14 @@ package com.mbrunarskiy.todo.config;
 import com.mbrunarskiy.todo.domain.Todo;
 import com.mbrunarskiy.todo.dto.file.FileDto;
 import com.mbrunarskiy.todo.dto.todo.TodoUpdateDto;
+import org.apache.spark.SparkConf;
+import org.apache.spark.SparkContext;
+import org.apache.spark.api.java.JavaSparkContext;
 import org.modelmapper.*;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import static java.util.Objects.isNull;
 
@@ -15,6 +19,12 @@ import static java.util.Objects.isNull;
  */
 @Configuration
 public class CommonConfig {
+
+    @Bean
+    public JavaSparkContext sc() {
+        SparkConf conf = new SparkConf().setMaster("local[*]").setAppName("Му Арр");
+        return new JavaSparkContext(conf);
+    }
 
     @Bean
     public ModelMapper modelMapper() {
