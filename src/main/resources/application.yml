@@ -1,6 +1,7 @@
 server:
   port: 8989
 
+
 app:
   path:
     project: /opt/projects/todo
@@ -9,6 +10,7 @@ app:
 logging:
   level:
     root: DEBUG
+
 
 db:
   todo:
